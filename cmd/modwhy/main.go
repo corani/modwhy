@@ -14,15 +14,24 @@ func main() {
 	var module string
 	var format string
 	var outfile string
+	var chdir string
 
 	flag.StringVar(&module, "m", "", "module path to query (required)")
 	flag.StringVar(&format, "f", "txt", "output format: txt, md, dot, svg, png, csv, mermaid")
 	flag.StringVar(&outfile, "o", "", "output file (default stdout)")
+	flag.StringVar(&chdir, "C", "", "change to this directory before running")
 	flag.Parse()
 
 	if module == "" {
-		fmt.Fprintln(os.Stderr, "usage: modwhy -m <module> [-f txt|md|dot|csv] [-o file]")
+		fmt.Fprintln(os.Stderr, "usage: modwhy -m <module> [-C dir] [-f txt|md|dot|csv] [-o file]")
 		os.Exit(1)
+	}
+
+	if chdir != "" {
+		if err := os.Chdir(chdir); err != nil {
+			fmt.Fprintf(os.Stderr, "modwhy: %v\n", err)
+			os.Exit(1)
+		}
 	}
 
 	var w io.Writer = os.Stdout

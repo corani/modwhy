@@ -26,6 +26,7 @@ modwhy -m <module>
 | Flag | Default | Description |
 | --- | --- | --- |
 | `-m` | (required) | Module path to query |
+| `-C` | (cwd) | Change to this directory before running |
 | `-f` | `txt` | Output format (see below) |
 | `-o` | stdout | Write output to this file |
 
@@ -36,10 +37,8 @@ modwhy -m <module>
   [glamour](https://charm.land/glamour), respects terminal width and
   `GLAMOUR_STYLE`.
 - **dot** - Graphviz dot source for the transitive-reduced import subgraph.
-- **svg** - Graphviz SVG image, rendered via embedded Graphviz WASM (no
-  external `dot` binary needed).
-- **png** - Graphviz PNG image, produced by rasterizing the SVG via
-  `tdewolff/canvas` (no external tools needed).
+- **svg** - Graphviz SVG image (no external `dot` binary needed).
+- **png** - Graphviz PNG image (no external tools needed).
 - **csv** - CSV table with the same columns as `txt`.
 - **mermaid** - Mermaid `graph LR` diagram of the import subgraph.
 

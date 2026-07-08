@@ -28,6 +28,7 @@ modwhy -m <module> -f png       # Graphviz PNG image
 modwhy -m <module> -f csv       # CSV table
 modwhy -m <module> -f mermaid   # Mermaid graph LR
 modwhy -m <module> -o out.md    # write to file
+modwhy -C /path/to/mod -m <module>  # query a different module
 ```
 
 ## Architecture
