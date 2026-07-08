@@ -129,11 +129,11 @@ func Subgraph(target string, g *Graph) []Edge {
 		}
 	}
 
-	// 4. Emit kept edges.
+	// 4. Emit kept edges with labels.
 	var edges []Edge
 	for _, e := range candidates {
 		if kept[e] {
-			edges = append(edges, Edge{e.from, e.to})
+			edges = append(edges, Edge{From: e.from, To: e.to, Label: edgeLabel(e.from, e.to, g)})
 		}
 	}
 
@@ -144,6 +144,18 @@ func Subgraph(target string, g *Graph) []Edge {
 		return edges[i].To < edges[j].To
 	})
 	return edges
+}
+
+func edgeLabel(from, to string, g *Graph) string {
+	for t := range g.ToolDeps[from] {
+		if t == to || strings.HasPrefix(t, to+"/") {
+			return "tool"
+		}
+	}
+	if deps, ok := g.Indirect[from]; ok && !deps[to] {
+		return "direct"
+	}
+	return ""
 }
 
 // DirectImporters returns all modules in subgraphNodes that have a direct edge

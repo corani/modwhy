@@ -23,7 +23,7 @@ type ModInfo struct {
 }
 
 type Edge struct {
-	From, To string
+	From, To, Label string
 }
 
 type Graph struct {

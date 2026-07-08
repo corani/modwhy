@@ -13,7 +13,11 @@ func Dot(w io.Writer, edges []modgraph.Edge) {
 	fmt.Fprintln(w, "  rankdir=LR")
 
 	for _, e := range edges {
-		fmt.Fprintf(w, "  %q -> %q\n", e.From, e.To)
+		if e.Label != "" {
+			fmt.Fprintf(w, "  %q -> %q [label=%q]\n", e.From, e.To, e.Label)
+		} else {
+			fmt.Fprintf(w, "  %q -> %q\n", e.From, e.To)
+		}
 	}
 
 	fmt.Fprintln(w, "}")

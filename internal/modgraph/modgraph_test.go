@@ -145,7 +145,7 @@ func TestSubgraph(t *testing.T) {
 			},
 			target: "example.com/target",
 			wantEdges: []modgraph.Edge{
-				{From: "example.com/root", To: "example.com/target"},
+				{From: "example.com/root", To: "example.com/target", Label: "direct"},
 			},
 		},
 		{
@@ -161,8 +161,8 @@ func TestSubgraph(t *testing.T) {
 			},
 			target: "example.com/target",
 			wantEdges: []modgraph.Edge{
-				{From: "example.com/a", To: "example.com/target"},
-				{From: "example.com/root", To: "example.com/a"},
+				{From: "example.com/a", To: "example.com/target", Label: ""},
+				{From: "example.com/root", To: "example.com/a", Label: "direct"},
 			},
 		},
 		{
@@ -178,8 +178,8 @@ func TestSubgraph(t *testing.T) {
 			},
 			target: "example.com/target",
 			wantEdges: []modgraph.Edge{
-				{From: "example.com/a", To: "example.com/target"},
-				{From: "example.com/root", To: "example.com/a"},
+				{From: "example.com/a", To: "example.com/target", Label: ""},
+				{From: "example.com/root", To: "example.com/a", Label: "direct"},
 			},
 		},
 		{
