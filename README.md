@@ -7,6 +7,22 @@ it, at what version, and how (direct, tool, or transitive). It also supports
 Graphviz dot, SVG, PNG, and Mermaid output for visualising the full import
 subgraph.
 
+## Why not `go mod why -m`?
+
+`go mod why -m <module>` shows one shortest import path from your main packages
+to the target — useful for a quick sanity check, but limited:
+
+| | `go mod why -m` | `modwhy` |
+| --- | --- | --- |
+| Shows all importers | no — one path only | yes |
+| Distinguishes direct / tool / transitive | no | yes |
+| Graph visualisation | no | dot, svg, png, mermaid |
+| Works for tool dependencies | no | yes |
+| Shows imported version | no | yes |
+
+In short, `go mod why -m` answers "is this reachable?" while `modwhy` answers
+"who depends on this, and through which paths?"
+
 ## Install
 
 ```bash
