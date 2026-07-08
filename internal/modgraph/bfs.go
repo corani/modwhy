@@ -49,7 +49,88 @@ func Subgraph(target string, g *Graph) []Edge {
 		return false
 	}
 
-	// 2. Emit edges where both endpoints are on-path, with transitive reduction.
+	// 2. Collect candidate edges where both endpoints are on-path.
+	type edge struct{ from, to string }
+	var candidates []edge
+	for from := range g.Adj {
+		if !onPath[from] || from == root {
+			continue
+		}
+		for to := range g.Adj[from] {
+			if onPath[to] {
+				candidates = append(candidates, edge{from, to})
+			}
+		}
+	}
+
+	// Build a set of kept non-root edges via transitive reduction.
+	// An edge A->B is suppressed only if there exists a kept edge A->M and a
+	// raw edge M->B (for some on-path M). Edges directly into target are never
+	// suppressed — they are the reason the node is in the subgraph at all.
+	kept := make(map[edge]bool, len(candidates))
+	for _, e := range candidates {
+		kept[e] = true
+	}
+	for {
+		changed := false
+		for _, e := range candidates {
+			if !kept[e] || e.to == target {
+				continue
+			}
+			for mid := range onPath {
+				if mid == e.from || mid == e.to {
+					continue
+				}
+				if kept[edge{e.from, mid}] && g.Adj[mid][e.to] {
+					kept[e] = false
+					changed = true
+					break
+				}
+			}
+		}
+		if !changed {
+			break
+		}
+	}
+
+	// Post-pass: restore suppressed edges for any stranded node — one that has
+	// no kept outgoing edge (except target) or no kept incoming edge (except root).
+	for {
+		changed := false
+		hasOut := map[string]bool{target: true}
+		hasIn := map[string]bool{root: true}
+		for _, e := range candidates {
+			if kept[e] {
+				hasOut[e.from] = true
+				hasIn[e.to] = true
+			}
+		}
+		// Also count root edges toward hasIn.
+		for from := range g.Adj {
+			if from != root || !onPath[from] {
+				continue
+			}
+			for to := range g.Adj[from] {
+				if onPath[to] && (!indirect[to] || isToolMod(to)) {
+					hasIn[to] = true
+				}
+			}
+		}
+		for _, e := range candidates {
+			if kept[e] {
+				continue
+			}
+			if (!hasOut[e.from] && hasOut[e.to]) || (!hasIn[e.to] && hasIn[e.from]) {
+				kept[e] = true
+				changed = true
+			}
+		}
+		if !changed {
+			break
+		}
+	}
+
+	// 3. Emit root edges and kept non-root edges.
 	var edges []Edge
 	for from := range g.Adj {
 		if !onPath[from] {
@@ -59,25 +140,13 @@ func Subgraph(target string, g *Graph) []Edge {
 			if !onPath[to] {
 				continue
 			}
-			// Root edges: keep if direct require or tool dependency.
 			if from == root {
 				if !indirect[to] || isToolMod(to) {
 					edges = append(edges, Edge{from, to})
 				}
 				continue
 			}
-			// Non-root: suppress if any intermediate on-path node dominates.
-			dominated := false
-			for mid := range onPath {
-				if mid == from || mid == to {
-					continue
-				}
-				if g.Adj[from][mid] && g.Adj[mid][to] {
-					dominated = true
-					break
-				}
-			}
-			if !dominated {
+			if kept[edge{from, to}] {
 				edges = append(edges, Edge{from, to})
 			}
 		}
