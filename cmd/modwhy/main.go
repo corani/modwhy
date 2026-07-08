@@ -11,10 +11,7 @@ import (
 )
 
 func main() {
-	var module string
-	var format string
-	var outfile string
-	var chdir string
+	var module, format, outfile, chdir string
 
 	flag.StringVar(&module, "m", "", "module path to query (required)")
 	flag.StringVar(&format, "f", "txt", "output format: txt, md, dot, svg, png, csv, mermaid")
@@ -35,13 +32,19 @@ func main() {
 	}
 
 	var w io.Writer = os.Stdout
+
 	if outfile != "" {
 		f, err := os.Create(outfile)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "modwhy: %v\n", err)
 			os.Exit(1)
 		}
-		defer f.Close()
+
+		defer func() {
+			if err := f.Close(); err != nil {
+				fmt.Fprintf(os.Stderr, "modwhy: %v\n", err)
+			}
+		}()
 		w = f
 	}
 

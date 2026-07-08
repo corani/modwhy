@@ -91,8 +91,8 @@ func Load() (*Graph, error) {
 }
 
 func splitModVer(s string) (mod, ver string) {
-	if i := strings.Index(s, "@"); i >= 0 {
-		return s[:i], s[i+1:]
+	if before, after, ok := strings.Cut(s, "@"); ok {
+		return before, after
 	}
 	return s, ""
 }

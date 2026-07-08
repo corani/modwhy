@@ -8,8 +8,10 @@ import (
 	"github.com/corani/modwhy/internal/modgraph"
 )
 
+//nolint:errcheck
 func Mermaid(w io.Writer, edges []modgraph.Edge) {
 	fmt.Fprintln(w, "graph LR")
+
 	for _, e := range edges {
 		fmt.Fprintf(w, "  %s --> %s\n", mermaidID(e.From), mermaidID(e.To))
 	}
