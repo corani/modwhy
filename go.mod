@@ -7,7 +7,7 @@ require (
 	github.com/goccy/go-graphviz v0.2.10
 	github.com/stretchr/testify v1.11.1
 	github.com/tdewolff/canvas v0.0.0-20260707223012-a1cbc6a74235
-	golang.org/x/term v0.42.0
+	golang.org/x/term v0.44.0
 )
 
 require (
@@ -241,7 +241,7 @@ require (
 	golang.org/x/mod v0.35.0 // indirect
 	golang.org/x/net v0.53.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/sys v0.45.0 // indirect
+	golang.org/x/sys v0.46.0 // indirect
 	golang.org/x/text v0.36.0 // indirect
 	golang.org/x/tools v0.44.0 // indirect
 	google.golang.org/protobuf v1.36.10 // indirect
