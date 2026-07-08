@@ -5,8 +5,12 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
+
+	"golang.org/x/mod/modfile"
 )
 
 type ModInfo struct {
@@ -28,6 +32,8 @@ type Graph struct {
 	Radj         map[string]map[string]bool   // to -> from
 	Versions     map[string]string            // module -> version (first seen)
 	EdgeVersions map[string]map[string]string // from -> to -> to-version
+	Indirect     map[string]map[string]bool   // from -> to -> is-indirect (from cached go.mod files)
+	ToolDeps     map[string]map[string]bool   // from -> to -> is-tool-dep (from cached go.mod files)
 }
 
 func Load() (*Graph, error) {
@@ -84,10 +90,100 @@ func Load() (*Graph, error) {
 			versions[to] = tver
 		}
 		addEdge(from, to, tver)
-
 	}
 
-	return &Graph{Info: info, Adj: adj, Radj: radj, Versions: versions, EdgeVersions: edgeVersions}, nil
+	indirect, toolDeps := loadIndirect(versions, info)
+
+	return &Graph{Info: info, Adj: adj, Radj: radj, Versions: versions, EdgeVersions: edgeVersions, Indirect: indirect, ToolDeps: toolDeps}, nil
+}
+
+// loadIndirect reads cached go.mod files for all known modules and returns:
+//   - indirect: from -> to -> is-indirect
+//   - toolDeps: from -> to -> is-tool-dep
+func loadIndirect(versions map[string]string, info ModInfo) (indirect, toolDeps map[string]map[string]bool) {
+	cacheDir, err := goModCache()
+	if err != nil {
+		cacheDir = filepath.Join(os.Getenv("HOME"), "go", "pkg", "mod", "cache", "download")
+	} else {
+		cacheDir = filepath.Join(cacheDir, "cache", "download")
+	}
+
+	indirect = make(map[string]map[string]bool)
+	toolDeps = make(map[string]map[string]bool)
+
+	// Seed root module from parsed go.mod (no cached file needed).
+	root := info.Module.Path
+	indirect[root] = make(map[string]bool)
+	toolDeps[root] = make(map[string]bool)
+	for _, r := range info.Require {
+		indirect[root][r.Path] = r.Indirect
+	}
+	for _, t := range info.Tool {
+		toolDeps[root][t.Path] = true
+	}
+
+	for mod, ver := range versions {
+		if mod == root || ver == "" {
+			continue
+		}
+		data, err := readCachedMod(cacheDir, mod, ver)
+		if err != nil {
+			continue
+		}
+		f, err := modfile.Parse(mod+"@"+ver+"/go.mod", data, nil)
+		if err != nil {
+			continue
+		}
+		isToolDep := func(path string) bool {
+			for _, t := range f.Tool {
+				if t.Path == path || strings.HasPrefix(t.Path, path+"/") {
+					return true
+				}
+			}
+			return false
+		}
+		m := make(map[string]bool)
+		for _, r := range f.Require {
+			m[r.Mod.Path] = r.Indirect && !isToolDep(r.Mod.Path)
+		}
+		indirect[mod] = m
+		td := make(map[string]bool)
+		for _, t := range f.Tool {
+			td[t.Path] = true
+		}
+		toolDeps[mod] = td
+	}
+
+	return indirect, toolDeps
+}
+
+func goModCache() (string, error) {
+	out, err := runCmd("go", "env", "GOMODCACHE")
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(string(out)), nil
+}
+
+func readCachedMod(cacheDir, mod, ver string) ([]byte, error) {
+	// Module paths with capital letters are escaped in the cache (A -> !a).
+	escaped := escapeModPath(mod)
+	path := filepath.Join(append([]string{cacheDir}, append(strings.Split(escaped, "/"), "@v", ver+".mod")...)...)
+	return os.ReadFile(path)
+}
+
+// escapeModPath applies the Go module cache path escaping (uppercase -> !lowercase).
+func escapeModPath(mod string) string {
+	var b strings.Builder
+	for _, c := range mod {
+		if c >= 'A' && c <= 'Z' {
+			b.WriteByte('!')
+			b.WriteRune(c + 32)
+		} else {
+			b.WriteRune(c)
+		}
+	}
+	return b.String()
 }
 
 func splitModVer(s string) (mod, ver string) {

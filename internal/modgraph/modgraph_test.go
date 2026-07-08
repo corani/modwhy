@@ -88,7 +88,18 @@ func buildGraph(info modgraph.ModInfo, rawEdges []string) *modgraph.Graph {
 		Radj:         radj,
 		Versions:     versions,
 		EdgeVersions: edgeVersions,
+		Indirect:     buildIndirect(info),
 	}
+}
+
+func buildIndirect(info modgraph.ModInfo) map[string]map[string]bool {
+	result := map[string]map[string]bool{}
+	m := map[string]bool{}
+	for _, r := range info.Require {
+		m[r.Path] = r.Indirect
+	}
+	result[info.Module.Path] = m
+	return result
 }
 
 func splitTwo(s string, a, b *string) (int, error) {
