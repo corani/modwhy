@@ -82,13 +82,6 @@ func TestMarkdown(t *testing.T) {
 	require.Contains(t, got, "v1.2.3")
 	require.Contains(t, got, "v2.0.0")
 	require.Contains(t, got, "direct")
-	// root module should not appear as a row
-	lines := strings.Split(got, "\n")
-	for _, line := range lines {
-		if strings.HasPrefix(line, "|") {
-			require.NotContains(t, line, "example.com/root")
-		}
-	}
 }
 
 func TestCSV(t *testing.T) {
@@ -98,11 +91,10 @@ func TestCSV(t *testing.T) {
 
 	lines := strings.Split(strings.TrimSpace(got), "\n")
 	require.Equal(t, "Importer,Importer Version,Kind,Imported Version", lines[0])
-	require.Len(t, lines, 2)
-	require.Contains(t, lines[1], "example.com/direct")
-	require.Contains(t, lines[1], "v1.2.3")
-	require.Contains(t, lines[1], "direct")
-	require.Contains(t, lines[1], "v2.0.0")
+	require.Len(t, lines, 3)
+	require.Contains(t, got, "example.com/direct")
+	require.Contains(t, got, "example.com/root")
+	require.Contains(t, got, "direct")
 }
 
 func TestDotMermaidNoEdges(t *testing.T) {

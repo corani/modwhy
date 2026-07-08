@@ -22,12 +22,9 @@ func CSV(w io.Writer, target string, g *modgraph.Graph, edges []modgraph.Edge) {
 	for _, mod := range importers {
 		k := modgraph.Kind(mod, g.Info)
 		if k == "root" {
-			continue
+			k = modgraph.Kind(target, g.Info)
 		}
 		ver := g.Versions[mod]
-		if ver == "" {
-			ver = ""
-		}
 		_ = cw.Write([]string{mod, ver, k, g.EdgeVersions[mod][target]})
 	}
 

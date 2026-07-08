@@ -30,7 +30,7 @@ func markdownSource(target string, g *modgraph.Graph, edges []modgraph.Edge) str
 	for _, mod := range importers {
 		k := modgraph.Kind(mod, g.Info)
 		if k == "root" {
-			continue
+			k = modgraph.Kind(target, g.Info)
 		}
 
 		ver := g.Versions[mod]
