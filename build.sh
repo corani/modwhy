@@ -51,7 +51,7 @@ while [ "$#" -gt "0" ]; do
     log_info "Run with ./bin/modwhy"
     ;;
   -t)
-    do_echo go test ./...
+    do_echo go test -cover ./...
     ;;
   -l)
     do_echo go tool golangci-lint run

@@ -5,6 +5,7 @@ go 1.26.4
 require (
 	charm.land/glamour/v2 v2.0.1
 	github.com/goccy/go-graphviz v0.2.10
+	github.com/stretchr/testify v1.11.1
 	github.com/tdewolff/canvas v0.0.0-20260707223012-a1cbc6a74235
 	golang.org/x/term v0.42.0
 )
@@ -206,7 +207,6 @@ require (
 	github.com/ssgreg/nlreturn/v2 v2.2.1 // indirect
 	github.com/stbenjam/no-sprintf-host-port v0.3.1 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
-	github.com/stretchr/testify v1.11.1 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
 	github.com/tdewolff/font v0.0.0-20260424075104-b5eeb1e23189 // indirect
 	github.com/tdewolff/minify/v2 v2.24.13 // indirect
