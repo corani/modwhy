@@ -6,8 +6,33 @@
   "postUpdateOptions": [
     "gomodTidy"
   ],
+  "prConcurrentLimit": 1,
+  "automergeType": "pr",
+  "platformAutomerge": true,
+  "commitMessagePrefix": "chore(deps):",
+  "dependencyDashboardLabels": [
+    "renovate"
+  ],
+  "enabledManagers": [
+    "gomod",
+    "github-actions"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
   "packageRules": [
     {
+      "groupName": "go-toolchain",
+      "description": "Update go directive to the newest version",
+      "matchPackageNames": [
+        "go"
+      ],
+      "rangeStrategy": "bump"
+    },
+    {
+      "groupName": "all patch dependencies",
+      "groupSlug": "all-patch",
       "matchUpdateTypes": [
         "patch",
         "digest"
@@ -38,12 +63,5 @@
       ],
       "dependencyDashboardApproval": true
     }
-  ],
-  "dependencyDashboardLabels": [
-    "renovate"
-  ],
-  "prConcurrentLimit": 2,
-  "automergeType": "pr",
-  "platformAutomerge": true,
-  "commitMessagePrefix": "chore(deps):"
+  ]
 }
