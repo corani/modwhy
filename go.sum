@@ -648,8 +648,8 @@ github.com/stretchr/testify v1.11.1 h1:7s2iGBzp5EwR7/aIZr8ao5+dra3wiQyKjjFuvgVKu
 github.com/stretchr/testify v1.11.1/go.mod h1:wZwfW3scLgRK+23gO65QZefKpKQRnfz6sD981Nm4B6U=
 github.com/subosito/gotenv v1.4.1 h1:jyEFiXpy21Wm81FBN71l9VoMMV8H8jG+qIK3GCpY6Qs=
 github.com/subosito/gotenv v1.4.1/go.mod h1:ayKnFf/c6rvx/2iiLrJUk1e6plDbT3edrFNGqEflhK0=
-github.com/tdewolff/canvas v0.0.0-20260707223012-a1cbc6a74235 h1:h2FIMfIs+VEJltMADi0Vh8UwvoJ+34gLhfn77peMX0U=
-github.com/tdewolff/canvas v0.0.0-20260707223012-a1cbc6a74235/go.mod h1:Lz12ClttuKvo2jb1UxBfJJWmKV0LmEc8IRo/30R7z+k=
+github.com/tdewolff/canvas v0.0.0-20260708151538-b3beae08c578 h1:OKVthD6KmBTDWsxnPkmDLW35yp+lvoqWsMeteXOZW+4=
+github.com/tdewolff/canvas v0.0.0-20260708151538-b3beae08c578/go.mod h1:Lz12ClttuKvo2jb1UxBfJJWmKV0LmEc8IRo/30R7z+k=
 github.com/tdewolff/font v0.0.0-20260424075104-b5eeb1e23189 h1:wP/+8oeXiF55DUy9U0BP4iDD2mNu+o7evt5QLbLHv9E=
 github.com/tdewolff/font v0.0.0-20260424075104-b5eeb1e23189/go.mod h1:KjNTiF0TXOXJyWGS/0DPXRknEC20c12kc0JcCYNqtz4=
 github.com/tdewolff/minify/v2 v2.24.13 h1:xrcF7gKDnUszseEY9WX9mUlZII2v2Go/QAcAwRASw58=
