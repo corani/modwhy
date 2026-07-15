@@ -7,7 +7,7 @@ require (
 	github.com/goccy/go-graphviz v0.2.10
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
-	github.com/tdewolff/canvas v0.0.0-20260708151538-b3beae08c578
+	github.com/tdewolff/canvas v0.0.0-20260714230319-248e24504c3b
 	golang.org/x/mod v0.38.0
 	golang.org/x/term v0.45.0
 )
@@ -238,7 +238,7 @@ require (
 	go.uber.org/zap v1.27.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20260209203927-2842357ff358 // indirect
-	golang.org/x/image v0.39.0 // indirect
+	golang.org/x/image v0.41.0 // indirect
 	golang.org/x/net v0.56.0 // indirect
 	golang.org/x/sync v0.21.0 // indirect
 	golang.org/x/sys v0.47.0 // indirect

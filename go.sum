@@ -648,8 +648,8 @@ github.com/stretchr/testify v1.11.1 h1:7s2iGBzp5EwR7/aIZr8ao5+dra3wiQyKjjFuvgVKu
 github.com/stretchr/testify v1.11.1/go.mod h1:wZwfW3scLgRK+23gO65QZefKpKQRnfz6sD981Nm4B6U=
 github.com/subosito/gotenv v1.4.1 h1:jyEFiXpy21Wm81FBN71l9VoMMV8H8jG+qIK3GCpY6Qs=
 github.com/subosito/gotenv v1.4.1/go.mod h1:ayKnFf/c6rvx/2iiLrJUk1e6plDbT3edrFNGqEflhK0=
-github.com/tdewolff/canvas v0.0.0-20260708151538-b3beae08c578 h1:OKVthD6KmBTDWsxnPkmDLW35yp+lvoqWsMeteXOZW+4=
-github.com/tdewolff/canvas v0.0.0-20260708151538-b3beae08c578/go.mod h1:Lz12ClttuKvo2jb1UxBfJJWmKV0LmEc8IRo/30R7z+k=
+github.com/tdewolff/canvas v0.0.0-20260714230319-248e24504c3b h1:nfrp/2YyXxBdhIKCdtNWRfy3C89CpD2LVu467JDU66w=
+github.com/tdewolff/canvas v0.0.0-20260714230319-248e24504c3b/go.mod h1:EUnkUjU6A6BOIzmtICjy/2nGxJa1oXXYLv0kVELAcYE=
 github.com/tdewolff/font v0.0.0-20260424075104-b5eeb1e23189 h1:wP/+8oeXiF55DUy9U0BP4iDD2mNu+o7evt5QLbLHv9E=
 github.com/tdewolff/font v0.0.0-20260424075104-b5eeb1e23189/go.mod h1:KjNTiF0TXOXJyWGS/0DPXRknEC20c12kc0JcCYNqtz4=
 github.com/tdewolff/minify/v2 v2.24.13 h1:xrcF7gKDnUszseEY9WX9mUlZII2v2Go/QAcAwRASw58=
@@ -758,8 +758,8 @@ golang.org/x/image v0.0.0-20190227222117-0694c2d4d067/go.mod h1:kZ7UVZpmo3dzQBMx
 golang.org/x/image v0.0.0-20190802002840-cff245a6509b/go.mod h1:FeLwcggjj3mMvU+oOTbSwawSJRM1uh48EjtB4UJZlP0=
 golang.org/x/image v0.0.0-20191009234506-e7c1f5e7dbb8/go.mod h1:FeLwcggjj3mMvU+oOTbSwawSJRM1uh48EjtB4UJZlP0=
 golang.org/x/image v0.0.0-20210504121937-7319ad40d33e/go.mod h1:FeLwcggjj3mMvU+oOTbSwawSJRM1uh48EjtB4UJZlP0=
-golang.org/x/image v0.39.0 h1:skVYidAEVKgn8lZ602XO75asgXBgLj9G/FE3RbuPFww=
-golang.org/x/image v0.39.0/go.mod h1:sIbmppfU+xFLPIG0FoVUTvyBMmgng1/XAMhQ2ft0hpA=
+golang.org/x/image v0.41.0 h1:8wS72eGJMJaBxK6okTzd4WaXumUlTVlb753MlsSvTCo=
+golang.org/x/image v0.41.0/go.mod h1:uIc348UZMSvS5Z65CVZ7iDPaNobNFEPeJ4kbqTOszmA=
 golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3/go.mod h1:UVdnD1Gm6xHRNCYTkRU2/jEulfH38KcIWyp/GAMgvoE=
 golang.org/x/lint v0.0.0-20190227174305-5b3e6a55c961/go.mod h1:wehouNa3lNwaWXcvxsM5YxQ5yQlVC4a0KAMCusXpPoU=
 golang.org/x/lint v0.0.0-20190301231843-5614ed5bae6f/go.mod h1:UVdnD1Gm6xHRNCYTkRU2/jEulfH38KcIWyp/GAMgvoE=
