@@ -8,7 +8,7 @@ require (
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
 	github.com/tdewolff/canvas v0.0.0-20260809181527-bd13cbcdd680
-	golang.org/x/mod v0.38.0
+	golang.org/x/mod v0.39.0
 	golang.org/x/term v0.45.0
 )
 
