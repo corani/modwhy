@@ -6,8 +6,8 @@ require (
 	charm.land/glamour/v2 v2.0.1
 	github.com/goccy/go-graphviz v0.2.10
 	github.com/spf13/cobra v1.10.2
-	github.com/stretchr/testify v1.12.0
-	github.com/tdewolff/canvas v0.0.0-20260809181527-bd13cbcdd680
+	github.com/stretchr/testify v1.12.1
+	github.com/tdewolff/canvas v0.0.0-20260819163904-0e0d9b2359bd
 	golang.org/x/mod v0.40.0
 	golang.org/x/term v0.45.0
 )
@@ -234,7 +234,7 @@ require (
 	go.augendre.info/fatcontext v0.9.0 // indirect
 	go.uber.org/multierr v1.10.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
-	go.yaml.in/yaml/v3 v3.0.4 // indirect
+	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20260209203927-2842357ff358 // indirect
 	golang.org/x/image v0.44.0 // indirect
 	golang.org/x/net v0.58.0 // indirect
