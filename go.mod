@@ -7,7 +7,7 @@ require (
 	github.com/goccy/go-graphviz v0.2.10
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.12.1
-	github.com/tdewolff/canvas v0.0.0-20260820161200-72985dc66d4e
+	github.com/tdewolff/canvas v0.0.0-20260822211237-56e622de465a
 	golang.org/x/mod v0.40.0
 	golang.org/x/term v0.45.0
 )
@@ -159,7 +159,7 @@ require (
 	github.com/matoous/godox v1.1.0 // indirect
 	github.com/mattn/go-colorable v0.1.15 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
-	github.com/mattn/go-runewidth v0.0.27 // indirect
+	github.com/mattn/go-runewidth v0.0.28 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
 	github.com/mgechev/revive v1.15.0 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.27 // indirect
@@ -208,9 +208,9 @@ require (
 	github.com/stbenjam/no-sprintf-host-port v0.3.1 // indirect
 	github.com/stretchr/objx v0.5.3 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
-	github.com/tdewolff/font v0.0.0-20260527091451-1663e68cb8a4 // indirect
-	github.com/tdewolff/minify/v2 v2.24.16 // indirect
-	github.com/tdewolff/parse/v2 v2.8.15 // indirect
+	github.com/tdewolff/font v0.0.0-20260822205238-d0d2f004b117 // indirect
+	github.com/tdewolff/minify/v2 v2.24.17 // indirect
+	github.com/tdewolff/parse/v2 v2.8.16 // indirect
 	github.com/tetafro/godot v1.5.6 // indirect
 	github.com/tetratelabs/wazero v1.10.1 // indirect
 	github.com/timakin/bodyclose v0.0.0-20260129054331-73d1f95b84b4 // indirect
@@ -237,7 +237,7 @@ require (
 	go.uber.org/zap v1.27.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20260811152304-ee035b5b010f // indirect
-	golang.org/x/image v0.44.0 // indirect
+	golang.org/x/image v0.45.0 // indirect
 	golang.org/x/net v0.58.0 // indirect
 	golang.org/x/sync v0.22.0 // indirect
 	golang.org/x/sys v0.47.0 // indirect
@@ -248,7 +248,7 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	honnef.co/go/tools v0.8.0 // indirect
-	modernc.org/knuth v0.5.5 // indirect
+	modernc.org/knuth v0.6.0 // indirect
 	modernc.org/token v1.1.0 // indirect
 	mvdan.cc/gofumpt v0.11.0 // indirect
 	mvdan.cc/unparam v0.0.0-20260818115549-3f964bcb5673 // indirect
