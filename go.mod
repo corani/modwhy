@@ -7,7 +7,7 @@ require (
 	github.com/goccy/go-graphviz v0.2.10
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.12.1
-	github.com/tdewolff/canvas v0.0.0-20260822211237-56e622de465a
+	github.com/tdewolff/canvas v0.0.0-20260829174008-0338c272fe72
 	golang.org/x/mod v0.40.0
 	golang.org/x/term v0.45.0
 )
