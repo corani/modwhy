@@ -250,7 +250,7 @@ require (
 	honnef.co/go/tools v0.8.1 // indirect
 	modernc.org/knuth v0.6.0 // indirect
 	modernc.org/token v1.1.0 // indirect
-	mvdan.cc/gofumpt v0.11.0 // indirect
+	mvdan.cc/gofumpt v0.12.0 // indirect
 	mvdan.cc/unparam v0.0.0-20260823230713-2fa3d841b0c8 // indirect
 	star-tex.org/x/tex v0.7.1 // indirect
 )
